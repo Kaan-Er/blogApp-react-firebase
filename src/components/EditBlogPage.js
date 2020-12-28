@@ -10,7 +10,9 @@ const EditBlogPage = (props) => {
       <BlogFrom
         blog={props.blog}
         onSubmit={(blog) => {
-          props.dispatch(editBlogFromDatabase(props.blog.id, blog));
+          props.dispatch(
+            editBlogFromDatabase(props.blog.id, blog, props.blog.uid)
+          );
           props.history.push("/blogs");
         }}
       />

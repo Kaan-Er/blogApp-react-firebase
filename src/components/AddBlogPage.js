@@ -6,7 +6,7 @@ import { addBlogToDatabase } from "../actions/blogs";
 const AddBlogPage = (props) => {
   return (
     <div>
-      <h1>Add Blog</h1>
+      <h3>Add Blog</h3>
       <BlogFrom
         onSubmit={(blog) => {
           props.dispatch(addBlogToDatabase(blog));

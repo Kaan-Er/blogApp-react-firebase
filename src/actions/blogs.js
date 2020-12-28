@@ -48,14 +48,17 @@ export const editBlog = (id, updates) => ({
   updates,
 });
 
-export const editBlogFromDatabase = (id, updates) => {
-  return (dispatch) => {
-    database
-      .ref(`blogs/${id}`)
-      .update(updates)
-      .then(() => {
-        dispatch(editBlog(id, updates));
-      });
+export const editBlogFromDatabase = (id, updates, userId) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    if (uid == userId) {
+      database
+        .ref(`blogs/${id}`)
+        .update(updates)
+        .then(() => {
+          dispatch(editBlog(id, updates));
+        });
+    }
   };
 };
 
@@ -103,6 +106,26 @@ export const getBlogsFromDatabaseByUserId = () => {
         });
         dispatch(setBlogs(blogs));
       });
+  };
+};
+
+export const deleteBlog = (id) => ({
+  type: "REMOVE_BLOG",
+  id,
+});
+
+export const deleteBlogFromDatabase = (userId, blogId) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    if (uid == userId) {
+      return database
+        .ref(`blogs/${blogId}`)
+        .remove()
+        .then(() => {
+          dispatch(deleteBlog(blogId));
+        });
+    }
+    return;
   };
 };
 
