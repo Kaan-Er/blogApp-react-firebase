@@ -33,7 +33,7 @@ export default class BlogFrom extends Component {
       this.props.onSubmit({
         title: this.state.title,
         description: this.state.description,
-        dateAdded: Date.now(),
+        dateAdded: new Date().toLocaleDateString(),
       });
     }
   };

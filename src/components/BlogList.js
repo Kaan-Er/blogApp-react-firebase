@@ -4,7 +4,7 @@ import BlogListItem from "./BlogListItem";
 
 const BlogList = (props) => {
   return (
-    <ul>
+    <ul className="list-group">
       {props.blogs.map((blog) => {
         return <BlogListItem {...blog} />;
       })}

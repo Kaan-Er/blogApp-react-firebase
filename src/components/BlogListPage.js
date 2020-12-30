@@ -4,11 +4,8 @@ import BlogList from "./BlogList";
 
 const BlogListPage = () => {
   return (
-    <div>
-      <p>Blog list</p>
+    <div className=" container mt-5">
       <BlogList />
-      <Link to="/blogs/1">Blog 1</Link>
-      <Link to="/blogs/2">Blog 2</Link>
     </div>
   );
 };

@@ -1,0 +1,75 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  font-family: "ubuntu", sans-serif;
+  font-weight: 400;
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+  background-color: #263238;
+  letter-spacing: .8px;
+  color: #ddddd3;
+}
+
+.borderTop {
+  border-top: 1px solid #f4f4f4;
+}
+
+.navbar a {
+  color: #ddddd3;
+  cursor: pointer;
+}
+
+.navbar a:hover {
+  color: #ff7979;
+  text-decoration: none;
+}
+
+.blogDate {
+  font-size: 0.725rem;
+  color: #999;
+  margin-bottom: 4px;
+}
+
+.blogTitle a {
+  color: #ff7979;
+  text-decoration: none;
+}
+
+.blogTitle a:hover {
+  color: #c49398;
+}
+
+.tags a {
+  color: #ff7979;
+  text-decoration: none;
+}
+
+.tags a:hover {
+  color: #c49398;
+  text-decoration: none;
+}
+
+.blogDetails h3 {
+  font-family: raleway, sans-serif;
+  line-height: 1.2;
+  color: #e9dbdd;
+  font-weight: 30;
+  font-size: 1.6rem;
+  padding: 2px;
+  margin-bottom: 5px;
+}
+
+.blogDetails h5 {
+  font-size: 0.9rem;
+  color: #999;
+  margin-bottom: 4px;
+  margin: 10px;
+}
+
+.blogDetails p {
+  line-height: 2;
+}

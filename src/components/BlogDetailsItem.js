@@ -1,11 +1,17 @@
 import React from "react";
+import Header from "./Header";
 
-const BlogDetailsItem = ({ id, title, description }) => {
+const BlogDetailsItem = ({ title, description, dateAdded }) => {
   return (
     <div>
-      <p>blog id: {id}</p>
-      <p>blog title: {title}</p>
-      <p>blog description: {description}</p>
+      <Header />
+      <div className="container mt-5">
+        <div className="blogDetails mx-3">
+          <h3>{title}</h3>
+          <h5 className="mb-5">{dateAdded} tarihinde eklendi.</h5>
+          <p>{description}</p>
+        </div>
+      </div>
     </div>
   );
 };

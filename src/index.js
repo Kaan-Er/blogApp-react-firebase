@@ -7,6 +7,9 @@ import configureStore from "./store/configureStore";
 import { getBlogsFromDatabase, clearBlogs } from "./actions/blogs";
 import { firebase } from "./firebase/firebaseConfig";
 import { loginAction, logoutAction } from "./actions/auth";
+import "bootstrap/dist/css/bootstrap.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "./style.css";
 
 const store = configureStore();
 
@@ -27,6 +30,10 @@ const renderApp = () => {
   }
 };
 
+store.dispatch(getBlogsFromDatabase()).then(() => {
+  renderApp();
+});
+
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     store.dispatch(loginAction(user.uid));
@@ -38,7 +45,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     });
   } else {
     store.dispatch(logoutAction());
-    store.dispatch(clearBlogs());
+    // store.dispatch(clearBlogs());
     renderApp();
     history.push("/");
   }

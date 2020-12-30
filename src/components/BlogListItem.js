@@ -6,9 +6,16 @@ import { deleteBlogFromDatabase } from "../actions/blogs";
 const BlogListItem = (props) => {
   const uid = props.auth.uid;
   return (
-    <>
-      <li>
-        {props.title} - <Link to={`/blogs/${props.id}`}>Details</Link>{" "}
+    <div className="mx-3 mb-5">
+      <div className="blogDate">{props.dateAdded}</div>
+      <div className="blogTitle d-inline">
+        <Link to={`/blogs/${props.id}`}>{props.title}</Link> —
+      </div>
+      <div className="blogContext d-inline">
+        {" "}
+        {props.description.split("", 250)}...
+      </div>
+      <>
         {uid == props.uid && <Link to={`/edit/${props.id}`}>Edit</Link>}
         {uid == props.uid && (
           <button
@@ -19,8 +26,8 @@ const BlogListItem = (props) => {
             Delete
           </button>
         )}
-      </li>
-    </>
+      </>
+    </div>
   );
 };
 
