@@ -28,6 +28,11 @@ body {
   text-decoration: none;
 }
 
+.nav-item a i:hover {
+  color: #ff7979;
+  text-decoration: none;
+}
+
 .blogDate {
   font-size: 0.725rem;
   color: #999;
@@ -56,7 +61,7 @@ body {
 .blogDetails h3 {
   font-family: raleway, sans-serif;
   line-height: 1.2;
-  color: #e9dbdd;
+  color: #fcf8f9;
   font-weight: 30;
   font-size: 1.6rem;
   padding: 2px;
@@ -66,8 +71,7 @@ body {
 .blogDetails h5 {
   font-size: 0.9rem;
   color: #999;
-  margin-bottom: 4px;
-  margin: 10px;
+  margin: 15px 0px 4px 3px;
 }
 
 .blogDetails p {

@@ -1,4 +1,6 @@
 import React from "react";
+import { login, logout } from "../actions/auth";
+import { firebase } from "../firebase/firebaseConfig";
 
 const Header = () => {
   return (
@@ -16,10 +18,10 @@ const Header = () => {
               <i className="fab fa-linkedin-in"></i>
             </a>
             <a className="mx-3" href="https://github.com/Kaan-Er">
-              <i class="fab fa-github"></i>
+              <i className="fab fa-github"></i>
             </a>
             <a className="mx-3" href="https://twitter.com/kaaner_dev">
-              <i class="fab fa-twitter"></i>
+              <i className="fab fa-twitter"></i>
             </a>
           </div>
           <div
@@ -27,21 +29,28 @@ const Header = () => {
             id="navbarNav"
           >
             <ul className="navbar-nav">
-              {/* <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-                Signup
-              </a>
-            </li> */}
-              <li className="nav-item">
-                <a
-                  className="nav-link active"
-                  aria-current="page"
-                  // onClick={login}
-                >
-                  <i class="fas fa-user-circle"></i>{" "}
-                  <i className="fab fa-google-plus-g"></i>
+              {!firebase.auth().currentUser ? (
+                <li className="nav-item">
+                  <a
+                    className="nav-link active"
+                    aria-current="page"
+                    onClick={login}
+                  >
+                    Login <i className="fab fa-google-plus-g"></i>
+                  </a>
+                </li>
+              ) : (
+                <a>
+                  <li className="nav-item">
+                    <a>
+                      <i className="fas fa-user-circle mr-3"></i>
+                    </a>
+                    <a onClick={logout}>
+                      <i className="fas fa-sign-out-alt"> </i>
+                    </a>
+                  </li>
                 </a>
-              </li>
+              )}
             </ul>
           </div>
         </div>

@@ -10,7 +10,9 @@ export const loginAction = (uid) => ({
 });
 
 export const logout = () => {
-  return firebase.auth().signOut();
+  firebase.auth().signOut();
+
+  return window.location.reload();
 };
 
 export const logoutAction = () => ({
