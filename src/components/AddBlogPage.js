@@ -5,16 +5,24 @@ import { addBlogToDatabase } from "../actions/blogs";
 
 const AddBlogPage = (props) => {
   return (
-    <div>
-      <h3>Add Blog</h3>
+    <div className="container">
+      <h3 className="text-center mt-5 addBlogText">Add new blog</h3>
+      <div className="border-bottom border-secondary w-25 mx-auto mb-5 mt-2"></div>
       <BlogFrom
         onSubmit={(blog) => {
           props.dispatch(addBlogToDatabase(blog));
           props.history.push("/blogs");
         }}
+        auth={props.auth}
       />
     </div>
   );
 };
 
-export default connect()(AddBlogPage);
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
+
+export default connect(mapStateToProps)(AddBlogPage);

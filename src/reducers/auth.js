@@ -5,6 +5,9 @@ const authReducer = (state = authState, action) => {
     case "LOGIN":
       return {
         uid: action.uid,
+        email: action.email,
+        photo: action.photo,
+        displayName: action.displayName,
       };
     case "LOGOUT":
       return {};

@@ -11,6 +11,7 @@ import createHistory from "history/createBrowserHistory";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import HomePage from "../components/HomePage";
+import UserProfile from "../components/profile/UserProfile";
 
 export const history = createHistory();
 
@@ -23,6 +24,7 @@ const AppRouter = () => {
           <PrivateRoute path="/blogs" component={BlogListPage} exact />
           <PrivateRoute path="/create" component={AddBlogPage} />
           <PrivateRoute path="/edit/:id" component={EditBlogPage} />
+          <PrivateRoute path="/user/:uid" component={UserProfile} />
           <Route path="/blogs/:id" component={BlogDetailsPage} />
           <Route path="/contact" component={ContactPage} />
           <Route component={NotFoundPage} />

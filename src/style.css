@@ -77,3 +77,23 @@ body {
 .blogDetails p {
   line-height: 2;
 }
+
+.addBlogText {
+  font-family: raleway, sans-serif;
+  line-height: 1.2;
+  color: #ddddd3;
+  font-weight: 20;
+  font-size: 1.3rem;
+  padding: 2px;
+  margin-bottom: 5px;
+}
+
+#userButton {
+  color: #ff7979;
+  text-decoration: none;
+}
+
+#userButton:hover {
+  color: #c49398;
+  text-decoration: none;
+}

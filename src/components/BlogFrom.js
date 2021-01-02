@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { MyEditor } from "../components/myEditor";
+import "./App.css";
+import "../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 export default class BlogFrom extends Component {
   constructor(props) {
@@ -6,6 +9,7 @@ export default class BlogFrom extends Component {
     this.state = {
       title: props.blog ? props.blog.title : "",
       description: props.blog ? props.blog.description : "",
+      displayName: props.auth.displayName,
       error: props.blog ? props.blog.error : "",
     };
   }
@@ -27,12 +31,13 @@ export default class BlogFrom extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     if (!this.state.title || !this.state.description) {
-      this.setState({ error: "lütfen tüm alanları doldurunuz!" });
+      this.setState({ error: "Please fill in all fields!" });
     } else {
       this.setState({ error: "" });
       this.props.onSubmit({
         title: this.state.title,
         description: this.state.description,
+        displayName: this.state.displayName,
         dateAdded: new Date().toLocaleDateString(),
       });
     }
@@ -40,27 +45,50 @@ export default class BlogFrom extends Component {
 
   render() {
     return (
-      <div>
-        {this.state.error && <p>{this.state.error}</p>}
-        <form onSubmit={this.onSubmit}>
-          <div>
-            <input
-              placeholder="enter title"
-              value={this.state.title}
-              onChange={this.onTitleChange}
-            />
-          </div>
-          <div>
-            <textarea
-              placeholder="enter description"
-              value={this.state.description}
-              onChange={this.onDescriptionChange}
-            ></textarea>
-          </div>
-          <div>
-            <button type="submit">Save Changes</button>
-          </div>
-        </form>
+      <div className="row">
+        <div className="col-lg-12">
+          {this.state.error && (
+            <p className="text-center">{this.state.error}</p>
+          )}
+          <form onSubmit={this.onSubmit}>
+            <div className="col-lg-12">
+              <div className="ml-5">
+                <input
+                  placeholder="Enter the blog title..."
+                  value={this.state.title}
+                  onChange={this.onTitleChange}
+                  className="w-100 mx-auto"
+                />
+              </div>
+              <div>
+                <textarea
+                  placeholder="enter description"
+                  value={this.state.description}
+                  onChange={this.onDescriptionChange}
+                  id="editor"
+                ></textarea>
+              </div>
+              <div className="app input-group">
+                <MyEditor
+                  // value={this.state.description}
+                  // onChange={(event) => {
+                  //   this.setState({
+                  //     description: event,
+                  //   });
+                  //   console.log(event);
+                  // }}
+                  title={this.state.title}
+                  error={this.state.error}
+                />
+              </div>
+              <div className="text-center mb-5">
+                <button type="submit" className="btn btn-danger">
+                  Save Blog
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }

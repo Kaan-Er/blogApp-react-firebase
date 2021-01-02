@@ -1,0 +1,38 @@
+.app {
+  text-align: center;
+  background-color: #263238;
+  height: 60%;
+  color: rgb(12, 11, 11);
+}
+
+.app .rich-editor {
+  padding: 3rem;
+  width: 96%;
+}
+
+.rich-editor .rdw-editor-main {
+  background-color: #fff;
+}
+
+.rich-editor .DraftEditor-editorContainer {
+  padding: 1rem;
+  height: 60vh;
+
+}
+
+.draft-editor-wrapper {
+  border: 1px solid rgb(187, 82, 82);
+
+}
+
+.html-view {
+  background-color: #fff;
+  color: #000;
+  margin: auto;
+  width: 70%;
+  margin-bottom: 2rem;
+}
+
+h4 {
+  color: rgb(12, 11, 11);
+}

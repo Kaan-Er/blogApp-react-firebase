@@ -23,8 +23,6 @@ const result = (
   </Provider>
 );
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById("root"));
-
 let isRendered = false;
 
 const renderApp = () => {
@@ -45,7 +43,7 @@ store.dispatch(getRolesFromDatabase()).then(() => {
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     console.log(user.email);
-    store.dispatch(loginAction(user.uid));
+    store.dispatch(loginAction(user));
     store.dispatch().then(() => {
       renderApp();
       if (history.location.pathname === "/") {

@@ -9,8 +9,13 @@ export const addBlog = (blog) => ({
 export const addBlogToDatabase = (blogData = {}) => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
-    const { title = "", description = "", dateAdded = 0 } = blogData;
-    const blog = { title, description, dateAdded, uid };
+    const {
+      title = "",
+      description = "",
+      dateAdded = 0,
+      displayName = "",
+    } = blogData;
+    const blog = { title, description, dateAdded, uid, displayName };
 
     database
       .ref("blogs")

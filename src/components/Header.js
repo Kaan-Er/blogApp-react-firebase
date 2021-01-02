@@ -1,8 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { login, logout } from "../actions/auth";
 import { firebase } from "../firebase/firebaseConfig";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <div className="container">
       <nav className="navbar navbar-expand-lg mt-4">
@@ -42,9 +44,9 @@ const Header = () => {
               ) : (
                 <a>
                   <li className="nav-item">
-                    <a>
+                    <Link to={`/user/${props.auth.uid}`}>
                       <i className="fas fa-user-circle mr-3"></i>
-                    </a>
+                    </Link>
                     <a onClick={logout}>
                       <i className="fas fa-sign-out-alt"> </i>
                     </a>
@@ -72,4 +74,10 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
+
+export default connect(mapStateToProps)(Header);
