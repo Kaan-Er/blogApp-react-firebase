@@ -9,7 +9,7 @@ export default class BlogFrom extends Component {
     this.state = {
       title: props.blog ? props.blog.title : "",
       description: props.blog ? props.blog.description : "",
-      displayName: props.auth.displayName,
+      displayName: props.blog ? props.blog.displayName : props.auth.displayName,
       error: props.blog ? props.blog.error : "",
     };
   }

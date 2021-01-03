@@ -15,18 +15,6 @@ const BlogListItem = (props) => {
         {" "}
         {props.description.split("", 250)}...
       </div>
-      <>
-        {uid == props.uid && <Link to={`/edit/${props.id}`}>Edit</Link>}
-        {uid == props.uid && (
-          <button
-            onClick={(e) => {
-              props.dispatch(deleteBlogFromDatabase(props.uid, props.id));
-            }}
-          >
-            Delete
-          </button>
-        )}
-      </>
     </div>
   );
 };

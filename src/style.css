@@ -61,7 +61,7 @@ body {
 .blogDetails h3 {
   font-family: raleway, sans-serif;
   line-height: 1.2;
-  color: #fcf8f9;
+  color: #e2dedf;
   font-weight: 30;
   font-size: 1.6rem;
   padding: 2px;
@@ -93,7 +93,17 @@ body {
   text-decoration: none;
 }
 
-#userButton:hover {
+
+#blogEditButton,
+#blogDeleteButton {
   color: #c49398;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+#userButton:hover,
+#blogEditButton:hover,
+#blogDeleteButton:hover {
+  color: #ff7979;
   text-decoration: none;
 }
