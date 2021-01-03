@@ -18,6 +18,23 @@ body {
   border-top: 1px solid #f4f4f4;
 }
 
+.footer {
+  /* text-align: center; */
+  font-size: 0.75em;
+  color: #999;
+  border-top: 1px solid #f4f4f4;
+  padding: 20px 0;
+  /* margin-top: 40px; */
+  /* bottom: 0px; */
+}
+
+.wrapper {
+  position: absolute;
+  max-width: 1100px;
+  margin: 0 auto;
+  bottom: 0px;
+}
+
 .navbar a {
   color: #ddddd3;
   cursor: pointer;
@@ -58,6 +75,10 @@ body {
   text-decoration: none;
 }
 
+.blogContext {
+  font-size: 16px;
+}
+
 .blogDetails h3 {
   font-family: raleway, sans-serif;
   line-height: 1.2;
@@ -76,6 +97,7 @@ body {
 
 .blogDetails p {
   line-height: 2;
+  font-size: 16px;
 }
 
 .addBlogText {

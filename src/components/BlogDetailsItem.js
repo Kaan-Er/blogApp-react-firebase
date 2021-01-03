@@ -31,7 +31,6 @@ const BlogDetailsItem = (props) => {
               {uid === props.blog.uid && (
                 <Link
                   to="/"
-                  // className="btn btn-outline-danger"
                   id="blogDeleteButton"
                   onClick={(e) => {
                     props.dispatch(

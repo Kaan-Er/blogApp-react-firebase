@@ -14,8 +14,9 @@ export const addBlogToDatabase = (blogData = {}) => {
       description = "",
       dateAdded = 0,
       displayName = "",
+      category = "",
     } = blogData;
-    const blog = { title, description, dateAdded, uid, displayName };
+    const blog = { title, description, dateAdded, uid, displayName, category };
 
     database
       .ref("blogs")

@@ -8,7 +8,7 @@ const BlogList = (props) => {
     <div>
       {props.auth.uid && (
         <Link className="btn btn-danger m-3 mb-5" to="/create">
-          Add Blog
+          New Blog
         </Link>
       )}
       <ul className="list-group">

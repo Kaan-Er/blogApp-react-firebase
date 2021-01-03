@@ -3,6 +3,41 @@ import { MyEditor } from "../components/myEditor";
 import "./App.css";
 import "../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
+const options = [
+  {
+    label: "Java",
+    value: "Java",
+  },
+  {
+    label: "Javascript",
+    value: "Javascript",
+  },
+  {
+    label: "React",
+    value: "React",
+  },
+  {
+    label: "Angular",
+    value: "Angular",
+  },
+  {
+    label: "Ruby on Rails",
+    value: "Ruby on Rails",
+  },
+  {
+    label: "Html",
+    value: "Html",
+  },
+  {
+    label: "Css",
+    value: "Css",
+  },
+  {
+    label: "Other",
+    value: "Other",
+  },
+];
+
 export default class BlogFrom extends Component {
   constructor(props) {
     super(props);
@@ -10,8 +45,14 @@ export default class BlogFrom extends Component {
       title: props.blog ? props.blog.title : "",
       description: props.blog ? props.blog.description : "",
       displayName: props.blog ? props.blog.displayName : props.auth.displayName,
+      category: props.blog ? props.blog.category : "",
       error: props.blog ? props.blog.error : "",
     };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({ category: e.target.value });
   }
 
   onTitleChange = (e) => {
@@ -38,6 +79,7 @@ export default class BlogFrom extends Component {
         title: this.state.title,
         description: this.state.description,
         displayName: this.state.displayName,
+        category: this.state.category,
         dateAdded: new Date().toLocaleDateString(),
       });
     }
@@ -67,6 +109,16 @@ export default class BlogFrom extends Component {
                   onChange={this.onDescriptionChange}
                   id="editor"
                 ></textarea>
+              </div>
+              <div className="select-container">
+                <select
+                  value={this.state.category}
+                  onChange={this.handleChange}
+                >
+                  {options.map((option) => (
+                    <option value={option.value}>{option.label}</option>
+                  ))}
+                </select>
               </div>
               <div className="app input-group">
                 <MyEditor
