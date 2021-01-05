@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { MyEditor } from "../components/myEditor";
+import MyEditor from "../components/myEditor";
 import "./App.css";
 import "../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
@@ -44,7 +44,7 @@ export default class BlogFrom extends Component {
     this.state = {
       title: props.blog ? props.blog.title : "",
       description: props.blog ? props.blog.description : "",
-      displayName: props.blog ? props.blog.displayName : props.auth.displayName,
+      displayName: props.blog ? props.blog.displayName : "",
       category: props.blog ? props.blog.category : "",
       error: props.blog ? props.blog.error : "",
     };
@@ -90,7 +90,9 @@ export default class BlogFrom extends Component {
       <div className="row">
         <div className="col-lg-12">
           {this.state.error && (
-            <p className="text-center">{this.state.error}</p>
+            <p className="text-center" id="errorText">
+              {this.state.error}
+            </p>
           )}
           <form onSubmit={this.onSubmit}>
             <div className="col-lg-12">
@@ -99,7 +101,7 @@ export default class BlogFrom extends Component {
                   placeholder="Enter the blog title..."
                   value={this.state.title}
                   onChange={this.onTitleChange}
-                  className="w-100 mx-auto"
+                  className="w-100 mx-auto form-control my-3"
                 />
               </div>
               <div>
@@ -108,9 +110,10 @@ export default class BlogFrom extends Component {
                   value={this.state.description}
                   onChange={this.onDescriptionChange}
                   id="editor"
+                  className="form-control"
                 ></textarea>
               </div>
-              <div className="select-container">
+              <div className="select-container text-center">
                 <select
                   value={this.state.category}
                   onChange={this.handleChange}
@@ -122,15 +125,8 @@ export default class BlogFrom extends Component {
               </div>
               <div className="app input-group">
                 <MyEditor
-                  // value={this.state.description}
-                  // onChange={(event) => {
-                  //   this.setState({
-                  //     description: event,
-                  //   });
-                  //   console.log(event);
-                  // }}
-                  title={this.state.title}
-                  error={this.state.error}
+                  value={this.state.description}
+                  onChange={this.onDescriptionChange}
                 />
               </div>
               <div className="text-center mb-5">

@@ -7,11 +7,14 @@ const BlogList = (props) => {
   return (
     <div>
       {props.auth.uid && (
-        <Link className="btn btn-danger m-3 mb-5" to="/create">
+        <Link
+          className="btn btn-danger m-3 mb-5 float-right d-inline-block"
+          to="/create"
+        >
           New Blog
         </Link>
       )}
-      <ul className="list-group">
+      <ul className="list-group d-inline-block mb-5">
         {props.blogs.map((blog) => {
           return <BlogListItem {...blog} />;
         })}

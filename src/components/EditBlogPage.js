@@ -1,29 +1,32 @@
 import React from "react";
-import BlogFrom from "./BlogFrom";
+import BlogFrom from "./BlogFrom"; //don't touch
 import { connect } from "react-redux";
-import { editBlogFromDatabase, removeBlogFromDatabase } from "../actions/blogs";
+import { editBlogFromDatabase } from "../actions/blogs";
+import MyEditor from "./myEditor";
 
 const EditBlogPage = (props) => {
   return (
-    <div>
-      <h1>Edit Page</h1>
-      <BlogFrom
+    <div className="container">
+      <h3 className="text-center mt-5 addBlogText">Edit the blog</h3>
+      <div className="border-bottom border-secondary w-25 mx-auto mb-5 mt-2"></div>
+      <MyEditor
         blog={props.blog}
         onSubmit={(blog) => {
+          const blogEdit = {
+            title: blog.title,
+            description: blog.description,
+            category: blog.category,
+            dateAdded: new Date().toLocaleDateString(),
+            displayName: blog.displayName,
+          };
           props.dispatch(
-            editBlogFromDatabase(props.blog.id, blog, props.blog.uid)
+            editBlogFromDatabase(props.blog.id, blogEdit, props.auth.uid)
           );
           props.history.push("/blogs");
+          window.location.reload();
         }}
+        auth={props.auth}
       />
-      <button
-        onClick={() => {
-          props.dispatch(removeBlogFromDatabase(props.blog.id));
-          props.history.push("/blogs");
-        }}
-      >
-        Delete
-      </button>
     </div>
   );
 };
@@ -33,6 +36,7 @@ const mapStateToProps = (state, props) => {
     blog: state.blogs.find((b) => {
       return b.id === props.match.params.id;
     }),
+    auth: state.auth,
   };
 };
 

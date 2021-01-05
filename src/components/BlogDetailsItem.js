@@ -52,7 +52,12 @@ const BlogDetailsItem = (props) => {
             {props.blog?.dateAdded} tarihinde {props.blog?.displayName}{" "}
             tarafından eklendi.
           </h5>
-          <p>{props.blog?.description}</p>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: props.blog?.description,
+            }}
+            className="mb-5"
+          ></p>
         </div>
       </div>
     </div>

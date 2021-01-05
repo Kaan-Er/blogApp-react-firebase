@@ -48,9 +48,8 @@ export const removeBlogFromDatabase = (id) => {
   };
 };
 
-export const editBlog = (id, updates) => ({
+export const editBlog = (updates) => ({
   type: "EDIT_BLOG",
-  id,
   updates,
 });
 
@@ -62,7 +61,7 @@ export const editBlogFromDatabase = (id, updates, userId) => {
         .ref(`blogs/${id}`)
         .update(updates)
         .then(() => {
-          dispatch(editBlog(id, updates));
+          dispatch(editBlog({ ...updates }));
         });
     }
   };
