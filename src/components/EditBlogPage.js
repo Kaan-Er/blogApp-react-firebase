@@ -1,8 +1,9 @@
 import React from "react";
-import BlogFrom from "./BlogFrom"; //don't touch
 import { connect } from "react-redux";
 import { editBlogFromDatabase } from "../actions/blogs";
 import MyEditor from "./myEditor";
+import "./App.css";
+import "../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 const EditBlogPage = (props) => {
   return (

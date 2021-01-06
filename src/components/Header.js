@@ -60,15 +60,10 @@ const Header = (props) => {
       <div className="borderTop m-3"></div>
       <div className="tags d-flex justify-content-around">
         <a href="/">Home</a>
-        <a href="#">Java</a>
-        <a href="#">Javascript</a>
-        <a href="#">React</a>
-        <a href="#">Angular</a>
-        <a href="#">Ruby on Rails</a>
-        <a href="#">Html</a>
-        <a href="#">Css</a>
-        <a href="#">Dev-Ops</a>
-        <a href="#">Other</a>
+        {props.categories.map((category) => {
+          var categoryPath = category.split(" ").join("").toLowerCase();
+          return <a href={`/${categoryPath}`}>{category}</a>;
+        })}
       </div>
     </div>
   );
@@ -77,6 +72,7 @@ const Header = (props) => {
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
+    categories: state.categories,
   };
 };
 

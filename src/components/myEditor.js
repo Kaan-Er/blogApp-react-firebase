@@ -3,51 +3,16 @@ import { EditorState, convertToRaw, ContentState } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 import { Editor } from "react-draft-wysiwyg";
 import htmlToDraft from "html-to-draftjs";
+import { connect } from "react-redux";
 
-const options = [
-  {
-    label: "Select",
-    value: "Select",
-  },
-  {
-    label: "Java",
-    value: "Java",
-  },
-  {
-    label: "Javascript",
-    value: "Javascript",
-  },
-  {
-    label: "React",
-    value: "React",
-  },
-  {
-    label: "Angular",
-    value: "Angular",
-  },
-  {
-    label: "Ruby on Rails",
-    value: "Ruby on Rails",
-  },
-  {
-    label: "Html",
-    value: "Html",
-  },
-  {
-    label: "Css",
-    value: "Css",
-  },
-  {
-    label: "Other",
-    value: "Other",
-  },
-];
+var options;
 
 const getHtml = (editorState) =>
   draftToHtml(convertToRaw(editorState.getCurrentContent()));
 
 class MyEditor extends Component {
   constructor(props) {
+    options = props.categories;
     if (props.blog) {
       var description = htmlToDraft(props.blog.description);
     }
@@ -132,10 +97,10 @@ class MyEditor extends Component {
                   <select
                     value={this.state.category}
                     onChange={this.handleChange}
-                    className="mb-5 mt-3"
+                    className="mb-5 mt-3 "
                   >
                     {options.map((option) => (
-                      <option value={option.value}>{option.label}</option>
+                      <option value={option}>{option}</option>
                     ))}
                   </select>
                 </div>
@@ -159,4 +124,10 @@ class MyEditor extends Component {
   }
 }
 
-export default MyEditor;
+const mapStateToProps = (state) => {
+  return {
+    categories: state.categories,
+  };
+};
+
+export default connect(mapStateToProps)(MyEditor);

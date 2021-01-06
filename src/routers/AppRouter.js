@@ -6,7 +6,6 @@ import ContactPage from "../components/ContactPage";
 import NotFoundPage from "../components/NotFoundPage";
 import AddBlogPage from "../components/AddBlogPage";
 import EditBlogPage from "../components/EditBlogPage";
-import LoginPage from "../components/LoginPage";
 import createHistory from "history/createBrowserHistory";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";

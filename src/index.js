@@ -8,12 +8,15 @@ import { getBlogsFromDatabase, clearBlogs } from "./actions/blogs";
 import { getRolesFromDatabase } from "./actions/roles";
 import { firebase } from "./firebase/firebaseConfig";
 import { loginAction, logoutAction } from "./actions/auth";
-import $ from "jquery";
-import Popper from "popper.js";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "bootstrap/dist/css/bootstrap.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./style.css";
+import {
+  addBlogCategoryToDatabase,
+  clearCategories,
+  getCategoriesFromDatabase,
+} from "./actions/categories";
 
 const store = configureStore();
 
@@ -32,13 +35,15 @@ const renderApp = () => {
   }
 };
 
+store.dispatch(getRolesFromDatabase());
+
+store.dispatch(getCategoriesFromDatabase());
+
 store.dispatch(getBlogsFromDatabase()).then(() => {
   renderApp();
 });
 
-store.dispatch(getRolesFromDatabase()).then(() => {
-  renderApp();
-});
+// store.dispatch(addBlogCategoryToDatabase("Html"));
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
@@ -53,6 +58,7 @@ firebase.auth().onAuthStateChanged(function (user) {
   } else {
     store.dispatch(logoutAction());
     store.dispatch(clearBlogs());
+    store.dispatch(clearCategories());
     renderApp();
     history.push("/");
   }
