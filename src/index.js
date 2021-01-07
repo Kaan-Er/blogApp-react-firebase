@@ -17,6 +17,11 @@ import {
   clearCategories,
   getCategoriesFromDatabase,
 } from "./actions/categories";
+import {
+  addAdminToDatabase,
+  clearAdmins,
+  getAdminsFromDatabase,
+} from "./actions/admins";
 
 const store = configureStore();
 
@@ -43,11 +48,15 @@ store.dispatch(getBlogsFromDatabase()).then(() => {
   renderApp();
 });
 
+// store.dispatch(addAdminToDatabase("8M7uAYX9m4VdiFxP2njt7FOGnvG3")); // Add the new admin
+
+store.dispatch(getAdminsFromDatabase());
+
 // store.dispatch(addBlogCategoryToDatabase("Html"));
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
-    console.log(user.email);
+    // console.log(user.uid);
     store.dispatch(loginAction(user));
     store.dispatch().then(() => {
       renderApp();
@@ -59,6 +68,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     store.dispatch(logoutAction());
     store.dispatch(clearBlogs());
     store.dispatch(clearCategories());
+    store.dispatch(clearAdmins());
     renderApp();
     history.push("/");
   }
