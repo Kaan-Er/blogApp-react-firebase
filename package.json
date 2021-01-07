@@ -13,6 +13,8 @@
     "draft-js": "^0.11.7",
     "draftjs-to-html": "^0.9.1",
     "firebase": "^8.2.1",
+    "@fortawesome/fontawesome-free": "5.15.1",
+    "font-awesome": "^4.7.0",
     "history": "^4.7.2",
     "html-react-parser": "^1.1.1",
     "html-to-draftjs": "^1.5.0",
