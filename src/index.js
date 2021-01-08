@@ -22,6 +22,10 @@ import {
   clearAdmins,
   getAdminsFromDatabase,
 } from "./actions/admins";
+import {
+  addCommentToDatabase,
+  getCommentsFromDatabase,
+} from "./actions/comments";
 
 const store = configureStore();
 
@@ -47,6 +51,8 @@ store.dispatch(getCategoriesFromDatabase());
 store.dispatch(getBlogsFromDatabase()).then(() => {
   renderApp();
 });
+
+store.dispatch(getCommentsFromDatabase());
 
 // store.dispatch(addAdminToDatabase("8M7uAYX9m4VdiFxP2njt7FOGnvG3")); // Add the new admin
 
@@ -74,7 +80,4 @@ firebase.auth().onAuthStateChanged(function (user) {
   }
 });
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

@@ -14,8 +14,27 @@ body {
   color: #ddddd3;
 }
 
+hr {
+  margin: 100px 0px 20px 0px;
+  border-top: 1px solid #ddddd3;
+}
+
+.table {
+  color: #ddddd3;
+}
+
 .borderTop {
   border-top: 1px solid #f4f4f4;
+}
+
+a {
+  color: #ff7979;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #c49398;
+  text-decoration: none;
 }
 
 .footer {
@@ -163,7 +182,55 @@ div.public-DraftEditor-content {
 }
 
 #errorText {
+  margin-top: 100px;
   color: #ff7979;
   font-weight: 550;
   letter-spacing: 1px;
+}
+
+#commentEditor .demo-editor {
+  height: 250px;
+  margin-top: 5px;
+  margin-bottom: 25px;
+}
+
+#comments h4 {
+  font-family: raleway, sans-serif;
+  line-height: 1.2;
+  color: #e2dedf;
+  font-weight: 30;
+  font-size: 1.1rem;
+  padding: 2px;
+  margin-bottom: 5px;
+}
+
+#comments {
+  margin-left: 20px;
+  width: 100%;
+  display: inline-block;
+}
+
+.comment {
+  border: 1px solid rgb(180, 221, 221);
+  background-color: #32444d;
+  float: left;
+  border-radius: 5px;
+  padding-left: 40px;
+  padding-right: 30px;
+  padding-top: 10px;
+  width: 100%;
+}
+
+.comment h4,
+.comment span {
+  display: inline;
+}
+
+.comment p,
+.comment span {
+  color: #ddddd3;
+}
+
+.comment span {
+  font-size: .9rem;
 }
