@@ -28,7 +28,7 @@ const BlogDetailsItem = (props) => {
         blogId: props.blog.id,
         photo: props.auth.photo,
         statu: false,
-        dateAdded: new Date().toLocaleString(),
+        dateAdded: new Date().toLocaleDateString(),
       })
     );
     window.location.reload();

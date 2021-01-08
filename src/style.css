@@ -102,19 +102,22 @@ a:hover {
   font-weight: 30;
   font-size: 1.6rem;
   padding: 2px;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
 }
 
 .blogDetails h5 {
   font-size: 0.9rem;
   color: #999;
-  margin: 15px 0px 4px 3px;
+  margin: 0px 0px 4px 3px;
 }
 
 .blogDetails p {
   color: #e2dedf;
   line-height: 2;
   font-size: 16px;
+  text-align: justify;
+  text-indent: 35px;
+  clear: both;
 }
 
 .addBlogText {
@@ -205,7 +208,8 @@ div.public-DraftEditor-content {
 }
 
 #comments {
-  margin-left: 20px;
+  /* margin-left: 5%; */
+  /* margin-right: 5%; */
   width: 100%;
   display: inline-block;
 }
