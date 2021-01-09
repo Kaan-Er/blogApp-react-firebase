@@ -77,6 +77,25 @@ export const editCommentFromDatabase = (id, updates, userId) => {
   };
 };
 
+export const approveComment = (id) => ({
+  type: "APPROVE_COMMENT",
+  id,
+});
+
+export const approveCommentFromDatabase = (commentId, blogUid) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    if (uid === blogUid) {
+      database
+        .ref(`comments/${commentId}`)
+        .update({ statu: true })
+        .then(() => {
+          dispatch(approveComment(commentId));
+        });
+    }
+  };
+};
+
 export const clearComments = () => ({
   type: "CLEAR_COMMENTS",
 });

@@ -111,6 +111,16 @@ a:hover {
   margin: 0px 0px 4px 3px;
 }
 
+#comments a {
+  color: #ff7979;
+  text-decoration: none;
+}
+
+#comments a:hover {
+  color: #ff7979;
+  text-decoration: none;
+}
+
 .blogDetails p {
   color: #e2dedf;
   line-height: 2;
@@ -177,6 +187,10 @@ div.public-DraftEditor-content {
 .rdw-embedded-modal-link-input,
 .rdw-link-modal-input {
   border: .5px solid #1f1f14;
+}
+
+#commentEditor .rich-editor .DraftEditor-editorContainer {
+  height: 0px;
 }
 
 .rdw-dropdown-selectedtext {

@@ -6,7 +6,11 @@ import { deleteBlogFromDatabase } from "../actions/blogs";
 import { Editor } from "react-draft-wysiwyg";
 import { convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
-import { addCommentToDatabase } from "../actions/comments";
+import {
+  addCommentToDatabase,
+  approveCommentFromDatabase,
+  removeCommentFromDatabase,
+} from "../actions/comments";
 
 const getHtml = (editorContent) =>
   draftToHtml(convertToRaw(editorContent.getCurrentContent()));
@@ -108,24 +112,50 @@ const BlogDetailsItem = (props) => {
                   <h4>
                     {" "}
                     {comment.displayName}{" "}
-                    <i
-                      class="fas fa-check-circle"
-                      data-toggle="tooltip"
-                      data-placement="top"
-                      title="Approved comment"
-                    ></i>{" "}
-                    <i
-                      class="fas fa-exclamation-circle"
-                      data-toggle="tooltip"
-                      data-placement="top"
-                      title="Waiting for approval"
-                    ></i>{" "}
-                    <i
-                      class="fas fa-trash-alt"
-                      data-toggle="tooltip"
-                      data-placement="top"
-                      title="Delete this comment"
-                    ></i>
+                    {comment.blogUid === props.auth.uid && !comment.statu && (
+                      <a
+                        href={`/blogs/${comment.blogId}`}
+                        onClick={() => {
+                          props.dispatch(
+                            approveCommentFromDatabase(
+                              comment.id,
+                              comment.blogUid
+                            )
+                          );
+                        }}
+                      >
+                        <i
+                          class="fas fa-check-circle"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Approve the comment"
+                        ></i>
+                      </a>
+                    )}{" "}
+                    {comment.statu && comment.blogUid === props.auth.uid && (
+                      <i
+                        class="fas fa-check-circle"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="Approved comment"
+                      ></i>
+                    )}{" "}
+                    {comment.blogUid === props.auth.uid && (
+                      <a
+                        // href={`/blogs/${comment.blogId}`}
+                        type="button"
+                        onClick={() => {
+                          props.dispatch(removeCommentFromDatabase(comment.id));
+                        }}
+                      >
+                        <i
+                          class="fas fa-trash-alt"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Delete this comment"
+                        ></i>
+                      </a>
+                    )}
                   </h4>{" "}
                   <span className="float-right">{comment.dateAdded}</span>{" "}
                   <hr />
@@ -176,6 +206,7 @@ const BlogDetailsItem = (props) => {
 const mapDispatchToProps = (dispatch) => ({
   deleteBlogFromDatabase,
   addCommentToDatabase,
+  approveCommentFromDatabase,
   dispatch,
 });
 

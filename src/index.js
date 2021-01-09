@@ -24,6 +24,7 @@ import {
 } from "./actions/admins";
 import {
   addCommentToDatabase,
+  clearComments,
   getCommentsFromDatabase,
 } from "./actions/comments";
 
@@ -75,6 +76,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     store.dispatch(clearBlogs());
     store.dispatch(clearCategories());
     store.dispatch(clearAdmins());
+    store.dispatch(clearComments());
     renderApp();
     history.push("/");
   }

@@ -19,6 +19,15 @@ const commentReducer = (state = commentState, action) => {
           return comment;
         }
       });
+    case "APPROVE_COMMENT":
+      return state.map((comment) => {
+        if (comment.id === action.commentId) {
+          return {
+            ...comment,
+            statu: true,
+          };
+        }
+      });
     case "SET_COMMENTS":
       return action.comments;
     case "CLEAR_COMMENTS":
