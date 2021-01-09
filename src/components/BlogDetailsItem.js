@@ -42,11 +42,11 @@ const BlogDetailsItem = (props) => {
           <h3 className="d-flex flex-row">
             {props.blog?.title}{" "}
             <div className="ml-auto mr-2">
-              {uid === props.blog.uid && (
+              {uid === props.blog?.uid && (
                 <Link
                   className="mr-3"
                   id="blogEditButton"
-                  to={`/edit/${props.blog.id}`}
+                  to={`/edit/${props.blog?.id}`}
                 >
                   <i
                     className="fas fa-edit"
@@ -56,7 +56,7 @@ const BlogDetailsItem = (props) => {
                   ></i>
                 </Link>
               )}
-              {uid === props.blog.uid && (
+              {uid === props.blog?.uid && (
                 <Link
                   to="/"
                   id="blogDeleteButton"
@@ -105,11 +105,32 @@ const BlogDetailsItem = (props) => {
                     width="40"
                     height="40"
                   />
-                  <h4> {comment.displayName}</h4>{" "}
+                  <h4>
+                    {" "}
+                    {comment.displayName}{" "}
+                    <i
+                      class="fas fa-check-circle"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Approved comment"
+                    ></i>{" "}
+                    <i
+                      class="fas fa-exclamation-circle"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Waiting for approval"
+                    ></i>{" "}
+                    <i
+                      class="fas fa-trash-alt"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Delete this comment"
+                    ></i>
+                  </h4>{" "}
                   <span className="float-right">{comment.dateAdded}</span>{" "}
+                  <hr />
                   <br />
                   <p
-                    className="mt-2"
                     dangerouslySetInnerHTML={{
                       __html: comment?.description,
                     }}
@@ -117,27 +138,36 @@ const BlogDetailsItem = (props) => {
                 </div>
               </div>
             ))}
+          {props.comments.length == 0 && props.auth.uid && (
+            <div className="noCommentNote text-center d-flex justify-content-center mx-auto mt-5">
+              <i class="far fa-comment-dots"></i>&#160; Be the first to comment.
+            </div>
+          )}
         </div>
-        <div id="commentEditor">
-          <p className="text-center" id="errorText">
-            <i class="fas fa-exclamation-triangle"></i> Your comment will be
-            published after confirmation by the owner of the post.
-          </p>
-          <Editor
-            // editorState={this.editorContent}
-            wrapperClassName="rich-editor demo-wrapper"
-            editorClassName="demo-editor"
-            onEditorStateChange={onEditorStateChange}
-          />
-        </div>
-        <div className="text-center mb-5">
-          <button
-            className="btn btn-danger mx-auto mb-5 d-inline-block"
-            onClick={sendComment}
-          >
-            Send Comment
-          </button>
-        </div>
+        {props.auth.uid && (
+          <div id="commentEditor">
+            <p className="text-center" id="errorText">
+              <i class="fas fa-exclamation-triangle"></i> Your comment will be
+              published after confirmation by the owner of the post.
+            </p>
+            <Editor
+              // editorState={this.editorContent}
+              wrapperClassName="rich-editor demo-wrapper"
+              editorClassName="demo-editor"
+              onEditorStateChange={onEditorStateChange}
+            />
+          </div>
+        )}
+        {props.auth.uid && (
+          <div className="text-center mb-5">
+            <button
+              className="btn btn-danger mx-auto mb-5 d-inline-block"
+              onClick={sendComment}
+            >
+              Send Comment
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

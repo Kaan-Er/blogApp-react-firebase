@@ -193,8 +193,13 @@ div.public-DraftEditor-content {
 
 #commentEditor .demo-editor {
   height: 250px;
-  margin-top: 5px;
   margin-bottom: 25px;
+}
+
+#comments {
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 80px;
 }
 
 #comments h4 {
@@ -207,22 +212,20 @@ div.public-DraftEditor-content {
   margin-bottom: 5px;
 }
 
-#comments {
-  /* margin-left: 5%; */
-  /* margin-right: 5%; */
-  width: 100%;
-  display: inline-block;
-}
-
 .comment {
   border: 1px solid rgb(180, 221, 221);
   background-color: #32444d;
   float: left;
-  border-radius: 5px;
+  border-radius: 35px 35px 35px 5px;
   padding-left: 40px;
   padding-right: 30px;
   padding-top: 10px;
   width: 100%;
+}
+
+.comment hr {
+  margin: 10px 0px 0px 0px;
+  border-top: 1px solid #ddddd3;
 }
 
 .comment h4,
@@ -235,6 +238,20 @@ div.public-DraftEditor-content {
   color: #ddddd3;
 }
 
+.comment p {
+  margin-top: -15px;
+  word-wrap: break-word;
+}
+
 .comment span {
   font-size: .9rem;
+}
+
+.noCommentNote {
+  border: 1px solid rgb(180, 221, 221);
+  background-color: #32444d;
+  float: none;
+  border-radius: 7px;
+  padding: 10px 20px;
+  width: max-content;
 }
