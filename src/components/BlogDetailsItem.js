@@ -94,80 +94,252 @@ const BlogDetailsItem = (props) => {
         <div id="comments">
           <hr />
           {props.comments.length > 0 &&
-            props.comments.map((comment) => (
-              <div>
-                <div className="comment mt-4 text-justify float-left">
-                  {" "}
-                  <img
-                    src={
-                      comment.photo
-                        ? comment.photo
-                        : "https://i.imgur.com/yTFUilP.jpg"
-                    }
-                    alt=""
-                    className="rounded-circle"
-                    width="40"
-                    height="40"
-                  />
-                  <h4>
-                    {" "}
-                    {comment.displayName}{" "}
-                    {comment.blogUid === props.auth.uid && !comment.statu && (
-                      <a
-                        href={`/blogs/${comment.blogId}`}
-                        onClick={() => {
-                          props.dispatch(
-                            approveCommentFromDatabase(
-                              comment.id,
-                              comment.blogUid
-                            )
-                          );
+            props.comments.map((comment) => {
+              if (
+                (!props.auth.uid || comment.blogUid != props.auth.uid) &&
+                comment.statu
+              ) {
+                return (
+                  <div>
+                    <div className="comment mt-4 text-justify float-left">
+                      {" "}
+                      <img
+                        src={
+                          comment.photo
+                            ? comment.photo
+                            : "https://i.imgur.com/yTFUilP.jpg"
+                        }
+                        alt=""
+                        className="rounded-circle"
+                        width="40"
+                        height="40"
+                      />
+                      <h4>
+                        {" "}
+                        {comment.displayName}{" "}
+                        {comment.blogUid === props.auth.uid &&
+                          !comment.statu && (
+                            <a
+                              href={`/blogs/${comment.blogId}`}
+                              onClick={() => {
+                                props.dispatch(
+                                  approveCommentFromDatabase(
+                                    comment.id,
+                                    comment.blogUid
+                                  )
+                                );
+                              }}
+                            >
+                              <i
+                                class="fas fa-check-circle"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Approve the comment"
+                              ></i>
+                            </a>
+                          )}{" "}
+                        {comment.statu &&
+                          comment.blogUid === props.auth.uid && (
+                            <i
+                              class="fas fa-check-circle"
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Approved comment"
+                            ></i>
+                          )}{" "}
+                        {comment.blogUid === props.auth.uid && (
+                          <a
+                            // href={`/blogs/${comment.blogId}`}
+                            type="button"
+                            onClick={() => {
+                              props.dispatch(
+                                removeCommentFromDatabase(comment.id)
+                              );
+                            }}
+                          >
+                            <i
+                              class="fas fa-trash-alt"
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Delete this comment"
+                            ></i>
+                          </a>
+                        )}
+                      </h4>{" "}
+                      <span className="float-right">{comment.dateAdded}</span>{" "}
+                      <hr />
+                      <br />
+                      <p
+                        dangerouslySetInnerHTML={{
+                          __html: comment?.description,
                         }}
-                      >
+                      ></p>
+                    </div>
+                  </div>
+                );
+              } else if (
+                comment.blogUid != props.auth.uid &&
+                !comment.statu &&
+                comment.uid === props.auth.uid
+              ) {
+                return (
+                  <div>
+                    <div className="comment mt-4 text-justify float-left">
+                      {" "}
+                      <img
+                        src={
+                          comment.photo
+                            ? comment.photo
+                            : "https://i.imgur.com/yTFUilP.jpg"
+                        }
+                        alt=""
+                        className="rounded-circle"
+                        width="40"
+                        height="40"
+                      />
+                      <h4>
+                        {" "}
+                        {comment.displayName}{" "}
+                        {comment.blogUid === props.auth.uid &&
+                          !comment.statu && (
+                            <a
+                              href={`/blogs/${comment.blogId}`}
+                              onClick={() => {
+                                props.dispatch(
+                                  approveCommentFromDatabase(
+                                    comment.id,
+                                    comment.blogUid
+                                  )
+                                );
+                              }}
+                            >
+                              <i
+                                class="fas fa-check-circle"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Approve the comment"
+                              ></i>
+                            </a>
+                          )}{" "}
                         <i
-                          class="fas fa-check-circle"
+                          class="fas fa-exclamation-circle"
                           data-toggle="tooltip"
                           data-placement="top"
-                          title="Approve the comment"
-                        ></i>
-                      </a>
-                    )}{" "}
-                    {comment.statu && comment.blogUid === props.auth.uid && (
-                      <i
-                        class="fas fa-check-circle"
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="Approved comment"
-                      ></i>
-                    )}{" "}
-                    {comment.blogUid === props.auth.uid && (
-                      <a
-                        // href={`/blogs/${comment.blogId}`}
-                        type="button"
-                        onClick={() => {
-                          props.dispatch(removeCommentFromDatabase(comment.id));
+                          title="Your comment is waiting for approval"
+                        ></i>{" "}
+                        {comment.blogUid === props.auth.uid && (
+                          <a
+                            // href={`/blogs/${comment.blogId}`}
+                            type="button"
+                            onClick={() => {
+                              props.dispatch(
+                                removeCommentFromDatabase(comment.id)
+                              );
+                            }}
+                          >
+                            <i
+                              class="fas fa-trash-alt"
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Delete this comment"
+                            ></i>
+                          </a>
+                        )}
+                      </h4>{" "}
+                      <span className="float-right">{comment.dateAdded}</span>{" "}
+                      <hr />
+                      <br />
+                      <p
+                        dangerouslySetInnerHTML={{
+                          __html: comment?.description,
                         }}
-                      >
-                        <i
-                          class="fas fa-trash-alt"
-                          data-toggle="tooltip"
-                          data-placement="top"
-                          title="Delete this comment"
-                        ></i>
-                      </a>
-                    )}
-                  </h4>{" "}
-                  <span className="float-right">{comment.dateAdded}</span>{" "}
-                  <hr />
-                  <br />
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: comment?.description,
-                    }}
-                  ></p>
-                </div>
-              </div>
-            ))}
+                      ></p>
+                    </div>
+                  </div>
+                );
+              } else {
+                return (
+                  comment.blogUid === props.auth.uid && (
+                    <div>
+                      <div className="comment mt-4 text-justify float-left">
+                        {" "}
+                        <img
+                          src={
+                            comment.photo
+                              ? comment.photo
+                              : "https://i.imgur.com/yTFUilP.jpg"
+                          }
+                          alt=""
+                          className="rounded-circle"
+                          width="40"
+                          height="40"
+                        />
+                        <h4>
+                          {" "}
+                          {comment.displayName}{" "}
+                          {comment.blogUid === props.auth.uid &&
+                            !comment.statu && (
+                              <a
+                                href={`/blogs/${comment.blogId}`}
+                                onClick={() => {
+                                  props.dispatch(
+                                    approveCommentFromDatabase(
+                                      comment.id,
+                                      comment.blogUid
+                                    )
+                                  );
+                                }}
+                              >
+                                <i
+                                  class="fas fa-check-circle"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Approve the comment"
+                                ></i>
+                              </a>
+                            )}{" "}
+                          {comment.statu &&
+                            comment.blogUid === props.auth.uid && (
+                              <i
+                                class="fas fa-check-circle"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Approved comment"
+                              ></i>
+                            )}{" "}
+                          {comment.blogUid === props.auth.uid && (
+                            <a
+                              // href={`/blogs/${comment.blogId}`}
+                              type="button"
+                              onClick={() => {
+                                props.dispatch(
+                                  removeCommentFromDatabase(comment.id)
+                                );
+                              }}
+                            >
+                              <i
+                                class="fas fa-trash-alt"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Delete this comment"
+                              ></i>
+                            </a>
+                          )}
+                        </h4>{" "}
+                        <span className="float-right">{comment.dateAdded}</span>{" "}
+                        <hr />
+                        <br />
+                        <p
+                          dangerouslySetInnerHTML={{
+                            __html: comment?.description,
+                          }}
+                        ></p>
+                      </div>
+                    </div>
+                  )
+                );
+              }
+            })}
           {props.comments.length == 0 && props.auth.uid && (
             <div className="noCommentNote text-center d-flex justify-content-center mx-auto mt-5">
               <i class="far fa-comment-dots"></i>&#160; Be the first to comment.

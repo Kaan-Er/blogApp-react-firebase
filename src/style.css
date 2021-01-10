@@ -112,7 +112,7 @@ a:hover {
 }
 
 #comments a {
-  color: #ff7979;
+  color: #c49398;
   text-decoration: none;
 }
 
@@ -227,7 +227,7 @@ div.public-DraftEditor-content {
 }
 
 .comment {
-  border: 1px solid rgb(180, 221, 221);
+  border: .1px solid rgb(180, 221, 221);
   background-color: #32444d;
   float: left;
   border-radius: 35px 35px 35px 5px;
