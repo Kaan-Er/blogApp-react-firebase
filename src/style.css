@@ -102,7 +102,6 @@ a:hover {
   font-weight: 30;
   font-size: 1.6rem;
   padding: 2px;
-  /* margin-bottom: 5px; */
 }
 
 .blogDetails h5 {
@@ -145,6 +144,16 @@ a:hover {
   text-decoration: none;
 }
 
+.badge {
+  position: absolute;
+  top: 10px;
+  /* right: -10px; */
+  /* padding: 3px; */
+  border-radius: 50%;
+  background: #c24f4f;
+  color: white;
+  font-size: 11px;
+}
 
 #blogEditButton,
 #blogDeleteButton {
@@ -268,4 +277,52 @@ div.public-DraftEditor-content {
   border-radius: 7px;
   padding: 10px 20px;
   width: max-content;
+}
+
+.notification-box {
+  display: inline-block;
+  z-index: 99;
+  width: 20px;
+  height: 15px;
+  text-align: center;
+}
+
+.notification-count {
+  z-index: 1;
+  top: -18px;
+  padding: 5px;
+  right: -6px;
+  width: 20px;
+  height: 16px;
+  line-height: 30px;
+  font-size: 14px;
+  border-radius: 50%;
+  background-color: #eb5f5f;
+  color: #fff;
+  animation: zoom 3s 3s both infinite;
+
+}
+
+@keyframes zoom {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  10% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  51% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }

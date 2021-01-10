@@ -3,8 +3,11 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "./profile.css";
 
-const UserProfile = ({ auth, blogs }) => {
+const UserProfile = ({ auth, blogs, comments }) => {
   var count = 0;
+  var notificationNumber = comments.filter(
+    (comment) => !comment.statu && comment.blogUid === auth.uid
+  ).length;
   return (
     <div>
       <div className="container emp-profile">
@@ -42,7 +45,14 @@ const UserProfile = ({ auth, blogs }) => {
                       aria-controls="profile"
                       aria-selected="false"
                     >
-                      My Posts
+                      My Posts{" "}
+                      {notificationNumber > 0 && (
+                        <div class="notification-box">
+                          <span class="notification-count">
+                            {notificationNumber}
+                          </span>{" "}
+                        </div>
+                      )}
                     </a>
                   </li>
                 </ul>
@@ -94,13 +104,17 @@ const UserProfile = ({ auth, blogs }) => {
                         <tr>
                           <th scope="col">#</th>
                           <th scope="col">Post</th>
-                          <th scope="col">Waiting Comments</th>
+                          <th scope="col">Waiting Comments </th>
                         </tr>
                       </thead>
                       <tbody>
                         {blogs.map((blog) => {
                           if (blog.uid === auth.uid) {
                             count++;
+                            var waitingCommentNumber = comments.filter(
+                              (comment) =>
+                                !comment.statu && comment.blogId === blog.id
+                            ).length;
                             return (
                               <tr>
                                 <th scope="row">{count}</th>
@@ -111,7 +125,7 @@ const UserProfile = ({ auth, blogs }) => {
                                     </Link>
                                   }
                                 </td>
-                                <td>the Bird</td>
+                                <td>{waitingCommentNumber}</td>
                               </tr>
                             );
                           }
@@ -134,6 +148,7 @@ const mapStateToProps = (state) => {
   return {
     auth: state.auth,
     blogs: state.blogs,
+    comments: state.comments,
   };
 };
 

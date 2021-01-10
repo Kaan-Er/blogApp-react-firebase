@@ -5,6 +5,9 @@ import { login, logout } from "../actions/auth";
 import { firebase } from "../firebase/firebaseConfig";
 
 const Header = (props) => {
+  var notificationNumber = props.comments.filter(
+    (comment) => !comment.statu && comment.blogUid === props.auth.uid
+  ).length;
   return (
     <div className="container">
       <nav className="navbar navbar-expand-lg mt-4">
@@ -45,10 +48,15 @@ const Header = (props) => {
                 <a>
                   <li className="nav-item">
                     <Link to={`/user/${props.auth.uid}`}>
-                      <i className="fas fa-user-circle mr-3"></i>
+                      <i className="fas fa-user-circle mr-4">
+                        {" "}
+                        <span class="badge">
+                          {notificationNumber > 0 && notificationNumber}
+                        </span>
+                      </i>
                     </Link>
                     <a onClick={logout}>
-                      <i className="fas fa-sign-out-alt"> </i>
+                      <i className="fas fa-sign-out-alt ml-1"> </i>
                     </a>
                   </li>
                 </a>
@@ -73,6 +81,7 @@ const mapStateToProps = (state) => {
   return {
     auth: state.auth,
     categories: state.categories,
+    comments: state.comments,
   };
 };
 
