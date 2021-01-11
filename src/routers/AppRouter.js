@@ -26,7 +26,7 @@ const AppRouter = () => {
           <PrivateRoute path="/user/:uid" component={UserProfile} />
           <Route path="/blogs/:id" component={BlogDetailsPage} />
           <Route path="/contact" component={ContactPage} />
-          <Route component={NotFoundPage} />
+          <Route component={HomePage} />
         </Switch>
       </div>
     </Router>

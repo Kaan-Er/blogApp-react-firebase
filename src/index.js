@@ -73,10 +73,10 @@ firebase.auth().onAuthStateChanged(function (user) {
     });
   } else {
     store.dispatch(logoutAction());
-    store.dispatch(clearBlogs());
-    store.dispatch(clearCategories());
+    // store.dispatch(clearBlogs());
+    // store.dispatch(clearCategories());
     store.dispatch(clearAdmins());
-    store.dispatch(clearComments());
+    // store.dispatch(clearComments());
     renderApp();
     history.push("/");
   }
