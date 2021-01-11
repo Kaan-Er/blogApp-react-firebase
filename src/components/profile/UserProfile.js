@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Footer from "../Footer";
 import "./profile.css";
 
 const UserProfile = ({ auth, blogs, comments }) => {
@@ -140,6 +141,7 @@ const UserProfile = ({ auth, blogs, comments }) => {
           </div>
         </form>
       </div>
+      <Footer />
     </div>
   );
 };

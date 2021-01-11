@@ -11,6 +11,7 @@ import {
   approveCommentFromDatabase,
   removeCommentFromDatabase,
 } from "../actions/comments";
+import Footer from "./Footer";
 
 const getHtml = (editorContent) =>
   draftToHtml(convertToRaw(editorContent.getCurrentContent()));
@@ -92,7 +93,7 @@ const BlogDetailsItem = (props) => {
           ></p>
         </div>
         <div id="comments">
-          <hr />
+          {(props.approveComments.length > 0 || props.auth.uid) && <hr />}
           {props.comments.length > 0 &&
             props.comments.map((comment) => {
               if (
@@ -372,6 +373,7 @@ const BlogDetailsItem = (props) => {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 };
@@ -391,6 +393,9 @@ const mapStateToProps = (state, props) => {
     auth: state.auth,
     comments: state.comments.filter(
       (comment) => comment.blogId == props.match.params.id
+    ),
+    approveComments: state.comments.filter(
+      (comment) => comment.blogId == props.match.params.id && comment.statu
     ),
   };
 };

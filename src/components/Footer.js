@@ -5,7 +5,7 @@ const Footer = () => {
     <div className="container">
       <div className="footer wrapper">
         <nav className="nav">
-          <div>© Kaan ER</div>
+          <div className="mx-auto">© Kaan ER — 2021</div>
         </nav>
       </div>
     </div>

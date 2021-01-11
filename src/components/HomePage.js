@@ -1,7 +1,6 @@
 import React from "react";
 import BlogListPage from "./BlogListPage";
 import Header from "./Header";
-import Footer from "./Footer";
 
 const HomePage = () => {
   return (
