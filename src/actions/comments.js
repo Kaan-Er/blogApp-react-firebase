@@ -15,7 +15,7 @@ export const addCommentToDatabase = (commentData = {}) => {
       blogUid = "",
       blogId = "",
       photo = "",
-      statu = false,
+      statu,
     } = commentData;
     const comment = {
       description,
@@ -27,6 +27,8 @@ export const addCommentToDatabase = (commentData = {}) => {
       photo,
       statu,
     };
+
+    uid === comment.blogUid ? (comment.statu = true) : (comment.statu = false);
 
     database
       .ref("comments")

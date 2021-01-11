@@ -129,6 +129,11 @@ a:hover {
   clear: both;
 }
 
+#waitingApproval {
+  color: #ff7979;
+  text-decoration: none;
+}
+
 .addBlogText {
   font-family: raleway, sans-serif;
   line-height: 1.2;

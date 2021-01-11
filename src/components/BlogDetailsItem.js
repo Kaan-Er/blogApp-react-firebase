@@ -222,6 +222,7 @@ const BlogDetailsItem = (props) => {
                             </a>
                           )}{" "}
                         <i
+                          id="waitingApproval"
                           class="fas fa-exclamation-circle"
                           data-toggle="tooltip"
                           data-placement="top"
