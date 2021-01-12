@@ -100,7 +100,9 @@ class MyEditor extends Component {
                     className="mb-5 mt-3 "
                   >
                     {options.map((option) => (
-                      <option value={option}>{option}</option>
+                      <option value={option.categoryName}>
+                        {option.categoryName}
+                      </option>
                     ))}
                   </select>
                 </div>
