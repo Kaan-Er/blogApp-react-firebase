@@ -2,6 +2,9 @@
   "name": "blog-app",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "14.15.4"
+  },
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^24.0.0",
     "@ckeditor/ckeditor5-react": "^3.0.0",
