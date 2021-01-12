@@ -2,7 +2,6 @@ import { googleAuthProvider, firebase } from "../firebase/firebaseConfig";
 import { history } from "../routers/AppRouter";
 
 export const login = () => {
-  // console.log(firebase.auth().signInWithPopup(googleAuthProvider));
   return firebase.auth().signInWithPopup(googleAuthProvider);
 };
 
@@ -17,7 +16,6 @@ export const loginAction = (user) => ({
 export const logout = () => {
   firebase.auth().signOut();
   return history.push("/");
-  // return window.location.reload();
 };
 
 export const logoutAction = () => ({

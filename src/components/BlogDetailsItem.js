@@ -132,7 +132,7 @@ const BlogDetailsItem = (props) => {
                               }}
                             >
                               <i
-                                class="fas fa-check-circle"
+                                className="fas fa-check-circle"
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 title="Approve the comment"
@@ -142,7 +142,7 @@ const BlogDetailsItem = (props) => {
                         {comment.statu &&
                           comment.blogUid === props.auth.uid && (
                             <i
-                              class="fas fa-check-circle"
+                              className="fas fa-check-circle"
                               data-toggle="tooltip"
                               data-placement="top"
                               title="Approved comment"
@@ -159,7 +159,7 @@ const BlogDetailsItem = (props) => {
                             }}
                           >
                             <i
-                              class="fas fa-trash-alt"
+                              className="fas fa-trash-alt"
                               data-toggle="tooltip"
                               data-placement="top"
                               title="Delete this comment"
@@ -215,7 +215,7 @@ const BlogDetailsItem = (props) => {
                               }}
                             >
                               <i
-                                class="fas fa-check-circle"
+                                className="fas fa-check-circle"
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 title="Approve the comment"
@@ -224,7 +224,7 @@ const BlogDetailsItem = (props) => {
                           )}{" "}
                         <i
                           id="waitingApproval"
-                          class="fas fa-exclamation-circle"
+                          className="fas fa-exclamation-circle"
                           data-toggle="tooltip"
                           data-placement="top"
                           title="Your comment is waiting for approval"
@@ -240,7 +240,7 @@ const BlogDetailsItem = (props) => {
                             }}
                           >
                             <i
-                              class="fas fa-trash-alt"
+                              className="fas fa-trash-alt"
                               data-toggle="tooltip"
                               data-placement="top"
                               title="Delete this comment"
@@ -293,7 +293,7 @@ const BlogDetailsItem = (props) => {
                                 }}
                               >
                                 <i
-                                  class="fas fa-check-circle"
+                                  className="fas fa-check-circle"
                                   data-toggle="tooltip"
                                   data-placement="top"
                                   title="Approve the comment"
@@ -303,7 +303,7 @@ const BlogDetailsItem = (props) => {
                           {comment.statu &&
                             comment.blogUid === props.auth.uid && (
                               <i
-                                class="fas fa-check-circle"
+                                className="fas fa-check-circle"
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 title="Approved comment"
@@ -320,7 +320,7 @@ const BlogDetailsItem = (props) => {
                               }}
                             >
                               <i
-                                class="fas fa-trash-alt"
+                                className="fas fa-trash-alt"
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 title="Delete this comment"
@@ -344,15 +344,16 @@ const BlogDetailsItem = (props) => {
             })}
           {props.comments.length == 0 && props.auth.uid && (
             <div className="noCommentNote text-center d-flex justify-content-center mx-auto mt-5">
-              <i class="far fa-comment-dots"></i>&#160; Be the first to comment.
+              <i className="far fa-comment-dots"></i>&#160; Be the first to
+              comment.
             </div>
           )}
         </div>
         {props.auth.uid && (
           <div id="commentEditor">
             <p className="text-center" id="errorText">
-              <i class="fas fa-exclamation-triangle"></i> Your comment will be
-              published after confirmation by the owner of the post.
+              <i className="fas fa-exclamation-triangle"></i> Your comment will
+              be published after confirmation by the owner of the post.
             </p>
             <Editor
               // editorState={this.editorContent}

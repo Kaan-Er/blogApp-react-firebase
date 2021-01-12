@@ -10,7 +10,7 @@ const BlogListItem = (props) => {
         {props.dateAdded} / {props.category}
       </div>
       <div className="blogTitle d-inline-block">
-        <Link to={`/blogs/${props.id}`}>{props.title}</Link> —&#160;
+        <Link to={`/blogs/${props.id}`}>{props.title}</Link> &#160; <br />
       </div>
       <div className="blogContext d-inline-block">
         {props.description.replace(/<[^>]+>/g, "").split("", 250)}...

@@ -149,6 +149,11 @@ a:hover {
   clear: both;
 }
 
+.blogContext,
+.blogTitle {
+  text-align: justify;
+}
+
 #waitingApproval {
   color: #ff7979;
   text-decoration: none;

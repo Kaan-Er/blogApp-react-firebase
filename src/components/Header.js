@@ -50,7 +50,7 @@ const Header = (props) => {
                     <Link to={`/user/${props.auth.uid}`}>
                       <i className="fas fa-user-circle mr-4">
                         {" "}
-                        <span class="badge">
+                        <span className="badge">
                           {notificationNumber > 0 && notificationNumber}
                         </span>
                       </i>
