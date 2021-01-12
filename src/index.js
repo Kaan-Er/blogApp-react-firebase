@@ -14,7 +14,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./style.css";
 import {
   addBlogCategoryToDatabase,
-  clearCategories,
   getCategoriesFromDatabase,
 } from "./actions/categories";
 import {
@@ -24,7 +23,6 @@ import {
 } from "./actions/admins";
 import {
   addCommentToDatabase,
-  clearComments,
   getCommentsFromDatabase,
 } from "./actions/comments";
 
