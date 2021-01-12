@@ -5,9 +5,11 @@ export const addCategory = (category) => ({
   category,
 });
 
-export const addBlogCategoryToDatabase = (category) => {
+export const addBlogCategoryToDatabase = (categoryData = {}) => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
+    const { categoryName = "", categoryPath = "" } = categoryData;
+    const category = { categoryName, categoryPath };
     database
       .ref("category")
       .push(category)
