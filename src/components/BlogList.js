@@ -27,7 +27,7 @@ const BlogList = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
   return {
     blogs: state.blogs,
     auth: state.auth,

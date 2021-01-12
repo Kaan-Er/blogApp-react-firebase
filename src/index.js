@@ -59,7 +59,12 @@ store.dispatch(getCommentsFromDatabase());
 
 store.dispatch(getAdminsFromDatabase());
 
-// store.dispatch(addBlogCategoryToDatabase("Html"));
+// store.dispatch(
+//   addBlogCategoryToDatabase({
+//     categoryName: "Other",
+//     categoryPath: "other",
+//   })
+// );
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
