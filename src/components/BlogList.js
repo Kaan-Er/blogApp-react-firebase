@@ -17,9 +17,15 @@ const BlogList = (props) => {
           </Link>
         )}
         <ul className="list-group d-inline-block mb-5">
-          {props.blogs.map((blog) => {
-            return <BlogListItem {...blog} />;
-          })}
+          {props.category
+            ? props.blogs.map((blog) => {
+                if (blog.category === props.category.categoryName) {
+                  return <BlogListItem {...blog} />;
+                }
+              })
+            : props.blogs.map((blog) => {
+                return <BlogListItem {...blog} />;
+              })}
         </ul>
       </div>
       <Footer />
@@ -27,10 +33,13 @@ const BlogList = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
   return {
     blogs: state.blogs,
     auth: state.auth,
+    category: state.categories.find((category) => {
+      return category.categoryPath === props.match.params.key;
+    }),
   };
 };
 

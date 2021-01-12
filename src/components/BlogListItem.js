@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { deleteBlogFromDatabase } from "../actions/blogs";
+import Header from "./Header";
 
 const BlogListItem = (props) => {
   return (

@@ -69,8 +69,11 @@ const Header = (props) => {
       <div className="tags d-flex justify-content-around">
         <a href="/">Home</a>
         {props.categories.map((category) => {
-          var categoryPath = category.split(" ").join("").toLowerCase();
-          return <a href={`/${categoryPath}`}>{category}</a>;
+          return (
+            <a href={`/category/${category.categoryPath}`}>
+              {category.categoryName}
+            </a>
+          );
         })}
       </div>
     </div>
