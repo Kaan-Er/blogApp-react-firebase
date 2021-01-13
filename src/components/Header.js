@@ -70,9 +70,9 @@ const Header = (props) => {
         <a href="/">Home</a>
         {props.categories.map((category) => {
           return (
-            <a href={`/category/${category.categoryPath}`}>
+            <Link to={`/category/${category.categoryPath}`}>
               {category.categoryName}
-            </a>
+            </Link>
           );
         })}
       </div>

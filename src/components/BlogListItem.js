@@ -1,8 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { deleteBlogFromDatabase } from "../actions/blogs";
-import Header from "./Header";
 
 const BlogListItem = (props) => {
   return (
@@ -10,25 +7,14 @@ const BlogListItem = (props) => {
       <div className="blogDate">
         {props.dateAdded} / {props.category}
       </div>
-      <div className="blogTitle d-inline-block">
+      <div className="blogTitle">
         <Link to={`/blogs/${props.id}`}>{props.title}</Link> &#160; <br />
       </div>
-      <div className="blogContext d-inline-block">
+      <div className="blogContext">
         {props.description.replace(/<[^>]+>/g, "").split("", 250)}...
       </div>
     </div>
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  deleteBlogFromDatabase,
-  dispatch,
-});
-
-const mapStateToProps = (state) => {
-  return {
-    auth: state.auth,
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(BlogListItem);
+export default BlogListItem;

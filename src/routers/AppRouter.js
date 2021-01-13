@@ -11,6 +11,8 @@ import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import HomePage from "../components/HomePage";
 import UserProfile from "../components/profile/UserProfile";
+import CategoryBlogListPage from "../components/CategoryBlogListPage";
+import CategoryPage from "../components/CategoryPage";
 
 export const history = createHistory();
 
@@ -24,7 +26,7 @@ const AppRouter = () => {
           <PrivateRoute path="/create" component={AddBlogPage} />
           <PrivateRoute path="/edit/:id" component={EditBlogPage} />
           <PrivateRoute path="/user/:uid" component={UserProfile} />
-          <Route path="/category/:key" component={BlogListPage} />
+          <Route path="/category/:key" component={CategoryPage} />
           <Route path="/blogs/:id" component={BlogDetailsPage} />
           <Route path="/contact" component={ContactPage} />
           <Route component={HomePage} />
