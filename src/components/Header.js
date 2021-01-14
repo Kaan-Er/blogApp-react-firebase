@@ -75,7 +75,7 @@ const Header = (props) => {
         </div>
       </nav>
       <div className="borderTop m-3"></div>
-      <div className="tags d-flex justify-content-around">
+      <div className="tags d-flex justify-content-around" id="tags">
         <a href="/">Home</a>
         {props.categories.map((category) => {
           return (

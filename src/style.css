@@ -366,14 +366,13 @@ div.public-DraftEditor-content {
   }
 }
 
-/* @media (max-witdh:1000px) {
-  .navbar-collapse {
-    flex-basis: 0;
-  }
+@media (max-width: 768px) {
 
-  .container-fluid #navbarNav {
-    width: 0px;
-    display: none;
-
+  #tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-right: 5px;
+    margin-left: 5px;
   }
-} */
+}
