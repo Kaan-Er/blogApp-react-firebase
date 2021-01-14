@@ -76,7 +76,7 @@ const Header = (props) => {
       </nav>
       <div className="borderTop m-3"></div>
       <div className="tags d-flex justify-content-around" id="tags">
-        <a href="/">Home</a>
+        <Link to="/">Home</Link>
         {props.categories.map((category) => {
           return (
             <Link to={`/category/${category.categoryPath}`}>

@@ -342,6 +342,17 @@ div.public-DraftEditor-content {
 
 }
 
+.page-link {
+  background-color: #263238;
+  color: #ff7979;
+  /* border: none; */
+}
+
+.page-link:hover {
+  color: #C82333;
+  border: none;
+}
+
 @keyframes zoom {
   0% {
     opacity: 0;
