@@ -365,3 +365,15 @@ div.public-DraftEditor-content {
     opacity: 0;
   }
 }
+
+/* @media (max-witdh:1000px) {
+  .navbar-collapse {
+    flex-basis: 0;
+  }
+
+  .container-fluid #navbarNav {
+    width: 0px;
+    display: none;
+
+  }
+} */

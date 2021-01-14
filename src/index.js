@@ -4,7 +4,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import AppRouter, { history } from "./routers/AppRouter";
 import configureStore from "./store/configureStore";
-import { getBlogsFromDatabase, clearBlogs } from "./actions/blogs";
+import { getBlogsFromDatabase } from "./actions/blogs";
 import { getRolesFromDatabase } from "./actions/roles";
 import { firebase } from "./firebase/firebaseConfig";
 import { loginAction, logoutAction } from "./actions/auth";

@@ -11,58 +11,67 @@ const Header = (props) => {
   return (
     <div className="container">
       <nav className="navbar navbar-expand-lg mt-4">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="/">
-            &#60; kodlayanBlog &#47;&#62;
-          </a>
-          <div
-            className="collapse navbar-collapse d-flex justify-content-center ml-5 pl-5"
-            id="navbarNav"
-          >
-            <a className="mx-3" href="https://www.linkedin.com/in/kaan--er/">
-              <i className="fab fa-linkedin-in"></i>
-            </a>
-            <a className="mx-3" href="https://github.com/Kaan-Er">
-              <i className="fab fa-github"></i>
-            </a>
-            <a className="mx-3" href="https://twitter.com/kaaner_dev">
-              <i className="fab fa-twitter"></i>
-            </a>
-          </div>
-          <div
-            className="collapse navbar-collapse d-flex flex-row-reverse"
-            id="navbarNav"
-          >
-            <ul className="navbar-nav">
-              {!firebase.auth().currentUser ? (
-                <li className="nav-item">
-                  <a
-                    className="nav-link active"
-                    aria-current="page"
-                    onClick={login}
-                  >
-                    Login <i className="fab fa-google-plus-g"></i>
+        <a className="navbar-brand" href="/">
+          &#60; kodlayanBlog &#47;&#62;
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i className="fas fa-bars text-danger"></i>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav mx-auto mt-2 mt-lg-0 d-flex flex-row float-left">
+            <li className="nav-item active mr-3">
+              <a
+                className="nav-link"
+                href="https://www.linkedin.com/in/kaan--er/"
+              >
+                <i className="fab fa-linkedin-in"></i>
+              </a>
+            </li>
+            <li className="nav-item active mr-3">
+              <a className="nav-link" href="https://github.com/Kaan-Er">
+                <i className="fab fa-github"></i>
+              </a>
+            </li>
+            <li className="nav-item active mr-3">
+              <a className="nav-link" href="https://twitter.com/kaaner_dev">
+                <i className="fab fa-twitter"></i>
+              </a>
+            </li>
+          </ul>
+          <ul className="navbar-nav mt-2 mt-lg-0 d-flex flex-row ml-auto float-right">
+            {!firebase.auth().currentUser ? (
+              <li className="nav-item active">
+                <a className="nav-link " aria-current="page" onClick={login}>
+                  Login <i className="fab fa-google-plus-g"></i>
+                </a>
+              </li>
+            ) : (
+              <>
+                <li className="nav-item active mr-3">
+                  <Link className="nav-link" to={`/user/${props.auth.uid}`}>
+                    <i className="fas fa-user-circle ">
+                      <span>
+                        {notificationNumber > 0 && notificationNumber}
+                      </span>
+                    </i>
+                  </Link>
+                </li>
+                <li className="nav-item active">
+                  <a onClick={logout} className="nav-link">
+                    <i className="fas fa-sign-out-alt "> </i>
                   </a>
                 </li>
-              ) : (
-                <a>
-                  <li className="nav-item">
-                    <Link to={`/user/${props.auth.uid}`}>
-                      <i className="fas fa-user-circle mr-4">
-                        {" "}
-                        <span className="badge">
-                          {notificationNumber > 0 && notificationNumber}
-                        </span>
-                      </i>
-                    </Link>
-                    <a onClick={logout}>
-                      <i className="fas fa-sign-out-alt ml-1"> </i>
-                    </a>
-                  </li>
-                </a>
-              )}
-            </ul>
-          </div>
+              </>
+            )}
+          </ul>
         </div>
       </nav>
       <div className="borderTop m-3"></div>
