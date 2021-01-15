@@ -15,7 +15,7 @@ const Header = (props) => {
           &#60; kodlayanBlog &#47;&#62;
         </a>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#navbarNav"
